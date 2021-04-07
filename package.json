@@ -1,0 +1,74 @@
+{
+    "name": "@becode/mwenbwa",
+    "version": "0.0.1",
+    "description": "A web-based game of conquests… and trees",
+    "author": "leny <leny@becode.org>",
+    "license": "MIT",
+    "private": true,
+    "scripts": {
+        "lint": "npx eslint --fix --cache --ignore-pattern 'docs/*' src",
+        "build:server": "npx babel src/server -s --out-dir bin/server",
+        "work:server": "npx babel src/server -s --watch --verbose --out-dir bin/server",
+        "build:client": "npx webpack --progress --profile --colors",
+        "work:client": "npx webpack --env=dev --progress",
+        "build": "npm run build:server && npm run build:client",
+        "start": "node bin/server/index.js"
+    },
+    "lint-staged": {
+        "*.js": [
+            "npx eslint --fix --cache"
+        ]
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.12.16",
+        "@babel/core": "^7.12.16",
+        "@babel/plugin-proposal-class-properties": "^7.12.13",
+        "@babel/plugin-proposal-decorators": "^7.12.13",
+        "@babel/plugin-proposal-object-rest-spread": "^7.12.13",
+        "@babel/polyfill": "^7.12.1",
+        "@babel/preset-env": "^7.12.16",
+        "@babel/preset-react": "^7.12.13",
+        "@becode/eslint-config": "^0.9.1",
+        "@types/leaflet": "^1.5.23",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.2",
+        "css-loader": "^5.0.2",
+        "eslint": "^7.20.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "eslint-plugin-react": "^7.22.0",
+        "eslint-plugin-unicorn": "^20.1.0",
+        "file-loader": "^6.2.0",
+        "html-webpack-plugin": "^4.5.2",
+        "husky": "^4.3.8",
+        "lint-staged": "^10.5.4",
+        "prettier": "^2.2.1",
+        "sass": "^1.32.7",
+        "style-loader": "^2.0.0",
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack": "^4.46.0",
+        "webpack-cli": "^3.3.12"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "bcrypt": "^5.0.0",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "md5": "^2.3.0",
+        "mongodb": "^3.6.4",
+        "react": "^16.13.1",
+        "react-color": "^2.19.3",
+        "react-dom": "^16.13.1",
+        "react-leaflet": "^3.1.0",
+        "react-leaflet-markercluster": "^3.0.0-rc1",
+        "sass-loader": "^10.1.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npx lint-staged"
+        }
+    },
+    "engines": {
+        "node": "14.x"
+    }
+}

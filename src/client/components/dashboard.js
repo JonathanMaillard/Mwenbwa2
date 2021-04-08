@@ -29,7 +29,7 @@ const dash = ({user, changeNameValidation}) => (
                     <img
                         className={"dash__Photo"}
                         src={`http://www.gravatar.com/avatar/${md5(
-                            "bastienlafalize@gmail.com",
+                            sessionStorage.getItem("userEmail"),
                         )}?s=200`}
                     />
                 </div>

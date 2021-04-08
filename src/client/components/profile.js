@@ -48,7 +48,7 @@ const Profile = ({user}) => (
                 </div>
                 <div className={"boxProfile__score--trees"}>
                     <i className={"fas fa-tree"} />
-                    {`${sessionStorage.getItem("userTrees").length} trees`}
+                    {`${sessionStorage.getItem("userTrees")} trees`}
                 </div>
             </div>
         </div>

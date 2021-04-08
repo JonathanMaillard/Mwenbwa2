@@ -202,7 +202,27 @@ const dbGetUserFromInfo = userInfo => {
             const cursor = await collection.find(query);
             const result = await cursor.toArray();
 
-            //console.log(result);
+            //get the count of trees
+            const treeCollection = database.collection("trees");
+            const o_userId = new ObjectId(result[0]._id);
+
+            const treeCountCursor = await treeCollection.aggregate([
+                {
+                    $match: {
+                        owner: {
+                            $eq: o_userId,
+                        },
+                    },
+                },
+                {
+                    $count: "countTrees",
+                },
+            ]);
+            const treeCount = await treeCountCursor.toArray();
+
+            //add the count in the result
+            result[0].treesTest = treeCount[0].countTrees;
+
             return result;
         } catch (err) {
             console.error(`Something went wrong: ${err}`);

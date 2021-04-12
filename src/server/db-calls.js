@@ -221,7 +221,7 @@ const dbGetUserFromInfo = userInfo => {
             const treeCount = await treeCountCursor.toArray();
 
             //add the count in the result
-            result[0].treesTest = treeCount[0].countTrees;
+            result[0].trees = treeCount[0].countTrees;
 
             return result;
         } catch (err) {

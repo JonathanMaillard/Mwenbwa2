@@ -28,7 +28,7 @@ const defaultUser = {
     userEmail: "guest@BertrandleBG.com",
     userColor: "#F94144",
     userScore: 3,
-    userTrees: [],
+    userTrees: 0,
 };
 
 const addColorEvents = () => {
@@ -48,7 +48,7 @@ const getSessionStorage = () => ({
     userEmail: sessionStorage.getItem("userEmail"),
     userColor: sessionStorage.getItem("userColor"),
     userScore: sessionStorage.getItem("userScore"),
-    userTrees: sessionStorage.getItem("userTrees").split(","),
+    userTrees: sessionStorage.getItem("userTrees"),
 });
 const setSessionStorage = newSession => {
     sessionStorage.setItem("userId", newSession.userId);
@@ -56,7 +56,7 @@ const setSessionStorage = newSession => {
     sessionStorage.setItem("userEmail", newSession.userEmail);
     sessionStorage.setItem("userColor", newSession.userColor);
     sessionStorage.setItem("userScore", newSession.userScore);
-    sessionStorage.setItem("userTrees", newSession.userTrees.join(","));
+    sessionStorage.setItem("userTrees", newSession.userTrees);
 };
 setSessionStorage(defaultUser);
 
@@ -101,7 +101,7 @@ const App = () => {
                     userEmail: result.data.content.email,
                     userColor: result.data.content.color,
                     userScore: result.data.content.score,
-                    userTrees: result.data.content.trees || [],
+                    userTrees: result.data.content.trees || 0,
                 };
                 setSessionStorage(newSession);
                 hideSignForm();
@@ -158,7 +158,7 @@ const App = () => {
                     userEmail: result.data.content.email,
                     userColor: result.data.content.color,
                     userScore: result.data.content.score,
-                    userTrees: result.data.content.trees || [],
+                    userTrees: result.data.content.trees || 0,
                 };
                 setSessionStorage(newSession);
                 hideSignForm();
